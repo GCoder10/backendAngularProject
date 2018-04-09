@@ -1,0 +1,10 @@
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\bin\Debug\netcoreapp2.0\Projekt.API.deps.json
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\bin\Debug\netcoreapp2.0\Projekt.API.runtimeconfig.json
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\bin\Debug\netcoreapp2.0\Projekt.API.runtimeconfig.dev.json
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\bin\Debug\netcoreapp2.0\Projekt.API.dll
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\bin\Debug\netcoreapp2.0\Projekt.API.pdb
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\obj\Debug\netcoreapp2.0\Projekt.API.csproj.CoreCompileInputs.cache
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\obj\Debug\netcoreapp2.0\Projekt.API.AssemblyInfoInputs.cache
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\obj\Debug\netcoreapp2.0\Projekt.API.AssemblyInfo.cs
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\obj\Debug\netcoreapp2.0\Projekt.API.dll
+C:\Users\Kacper\Praktyki\BackendAPI\backendAngularProject\Projekt.API\obj\Debug\netcoreapp2.0\Projekt.API.pdb
