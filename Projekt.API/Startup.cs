@@ -28,6 +28,7 @@ namespace Projekt.API
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
             services.AddCors();
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
         }
 

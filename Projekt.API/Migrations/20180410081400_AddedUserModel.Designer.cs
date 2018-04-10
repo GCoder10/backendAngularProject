@@ -10,9 +10,10 @@ using System;
 namespace Projekt.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180410081400_AddedUserModel")]
+    partial class AddedUserModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,30 +45,6 @@ namespace Projekt.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
-                });
-
-            modelBuilder.Entity("Projekt.API.Models.Worker", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("city");
-
-                    b.Property<string>("email");
-
-                    b.Property<string>("name");
-
-                    b.Property<string>("pass");
-
-                    b.Property<int>("pesel");
-
-                    b.Property<string>("street");
-
-                    b.Property<string>("surname");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("workers");
                 });
 #pragma warning restore 612, 618
         }
