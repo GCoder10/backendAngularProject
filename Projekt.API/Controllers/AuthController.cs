@@ -1,3 +1,4 @@
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -26,7 +27,8 @@ namespace Projekt.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
         {
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+            if(!string.IsNullOrEmpty(userForRegisterDto.Username))
+                userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repo.UserExists(userForRegisterDto.Username))
                 ModelState.AddModelError("Username", "Username already exists");
@@ -52,6 +54,7 @@ namespace Projekt.API.Controllers
 
         public async Task<IActionResult> Login([FromBody]UserForLoginDto userForLoginDto)
         {
+      
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
@@ -76,8 +79,9 @@ namespace Projekt.API.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
 
-
             return Ok(new { tokenString });
+                          
+
         }
     }
 }
