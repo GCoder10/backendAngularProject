@@ -10,6 +10,6 @@ namespace Projekt.API.Data
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Worker> workers { get; set; }
-        
+        public DbSet<Photo> Photos { get; set; }
     }
 }
