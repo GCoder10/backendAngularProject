@@ -1,0 +1,26 @@
+[
+  '{{repeat(20)}}',
+  {
+    name: '{{firstName("male")}}',
+    surname: '{{surname()}}',
+    city: '{{city()}}',
+    email: '{{email()}}',
+    pass: 'password',
+    pesel: '{{integer(00000000000, 99999999999)}}',
+    street: '{{street()}}'
+  }
+]
+
+
+[
+  '{{repeat(20)}}',
+  {
+    name: '{{firstName("female")}}',
+    surname: '{{surname()}}',
+    city: '{{city()}}',
+    email: '{{email()}}',
+    pass: 'password',
+    pesel: '{{integer(00000000000, 99999999999)}}',
+    street: '{{street()}}'
+  }
+]

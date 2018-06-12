@@ -49,5 +49,27 @@ namespace Projekt.API.Data
                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
            }
         }
+
+
+        public void SeedWorkers()
+        {
+
+            _context.workers.RemoveRange(_context.workers);
+            _context.SaveChanges();
+
+
+        // seed workers
+        var workerData = System.IO.File.ReadAllText("Data/WorkersSeedData.json");
+        var workers = JsonConvert.DeserializeObject<List<Worker>>(workerData);
+
+        foreach (var worker in workers)
+        {
+            _context.workers.Add(worker);
+        }
+
+        _context.SaveChanges();
+        }
+
+
     }
 }
