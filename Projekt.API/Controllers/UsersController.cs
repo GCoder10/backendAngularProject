@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Projekt.API.Data;
+using Projekt.API.Dtos;
 
 namespace Projekt.API.Controllers
 {
@@ -10,8 +13,10 @@ namespace Projekt.API.Controllers
     public class UsersController : Controller
     {
         private readonly IApplicationRepository _repo;
-        public UsersController(IApplicationRepository repo)
+        private readonly IMapper _mapper;
+        public UsersController(IApplicationRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
@@ -20,15 +25,19 @@ namespace Projekt.API.Controllers
         {
             var users = await _repo.GetUsers();
 
-            return Ok(users);
-        }      
+            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            return Ok(usersToReturn);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
 
-            return Ok(user);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(user);
+
+            return Ok(userToReturn);
         }
 
 

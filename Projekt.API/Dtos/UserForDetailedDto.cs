@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Projekt.API.Models;
 
 namespace Projekt.API.Dtos
 {
@@ -16,7 +18,7 @@ namespace Projekt.API.Dtos
         public string Interests { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-
-        
+        public string PhotoUrl { get; set; }
+        public ICollection<PhotosForDetailedDto> Photos { get; set; }    
     }
 }
