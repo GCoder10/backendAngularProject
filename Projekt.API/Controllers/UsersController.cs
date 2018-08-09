@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Projekt.API.Data;
 using Projekt.API.Dtos;
 
@@ -14,11 +16,13 @@ namespace Projekt.API.Controllers
     public class UsersController : Controller
     {
         private readonly IApplicationRepository _repo;
+        private readonly DataContext _context;
         private readonly IMapper _mapper;
-        public UsersController(IApplicationRepository repo, IMapper mapper)
+        public UsersController(IApplicationRepository repo, IMapper mapper, DataContext context)
         {
             _mapper = mapper;
             _repo = repo;
+            _context = context;
         }
 
         [HttpGet]
@@ -42,7 +46,7 @@ namespace Projekt.API.Controllers
         }
 
         [HttpPut("{id}")] 
-        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto) 
+        public async Task<IActionResult> UpdateUser(int id, [FromBody]UserForUpdateDto userForUpdateDto) 
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
@@ -54,7 +58,20 @@ namespace Projekt.API.Controllers
             if (await _repo.SaveAll())
                 return NoContent();
 
-            
+            throw new Exception($"Updating user {id} failed on save");
+
+/*
+            var userFromRepo = await _context.Users.FirstOrDefaultAsync(x => x.Id.Equals(id));
+
+            var userAfterMapping = _mapper.Map(userForUpdateDto, userFromRepo);
+
+            _context.Entry(userAfterMapping).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+        
+          //  throw new Exception($"Updating user {id} failed on save");
+            return StatusCode(201);
+*/
         }
 
     }
