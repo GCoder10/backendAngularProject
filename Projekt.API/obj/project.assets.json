@@ -12572,11 +12572,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Kacper\\Praktyki\\BackendAPI\\backendAngularProject\\Projekt.API\\Projekt.API.csproj",
+      "projectUniqueName": "C:\\Users\\Kacper\\Praktyki\\BackendAPI\\backendAngularProject\\Projekt.API\\Projekt.API.csproj",
       "projectName": "Projekt.API",
-      "projectPath": "c:\\Users\\Kacper\\Praktyki\\BackendAPI\\backendAngularProject\\Projekt.API\\Projekt.API.csproj",
+      "projectPath": "C:\\Users\\Kacper\\Praktyki\\BackendAPI\\backendAngularProject\\Projekt.API\\Projekt.API.csproj",
       "packagesPath": "C:\\Users\\Kacper\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Kacper\\Praktyki\\BackendAPI\\backendAngularProject\\Projekt.API\\obj\\",
+      "outputPath": "C:\\Users\\Kacper\\Praktyki\\BackendAPI\\backendAngularProject\\Projekt.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
