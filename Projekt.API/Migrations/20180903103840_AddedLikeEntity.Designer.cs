@@ -11,14 +11,27 @@ using System;
 namespace Projekt.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180610173101_ExtendedUserClass")]
-    partial class ExtendedUserClass
+    [Migration("20180903103840_AddedLikeEntity")]
+    partial class AddedLikeEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011");
+
+            modelBuilder.Entity("Projekt.API.Models.Like", b =>
+                {
+                    b.Property<int>("LikerId");
+
+                    b.Property<int>("LikeeId");
+
+                    b.HasKey("LikerId", "LikeeId");
+
+                    b.HasIndex("LikeeId");
+
+                    b.ToTable("Likes");
+                });
 
             modelBuilder.Entity("Projekt.API.Models.Photo", b =>
                 {
@@ -30,6 +43,8 @@ namespace Projekt.API.Migrations
                     b.Property<string>("Description");
 
                     b.Property<bool>("IsMain");
+
+                    b.Property<string>("PublicId");
 
                     b.Property<string>("Url");
 
@@ -112,6 +127,19 @@ namespace Projekt.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("workers");
+                });
+
+            modelBuilder.Entity("Projekt.API.Models.Like", b =>
+                {
+                    b.HasOne("Projekt.API.Models.User", "Likee")
+                        .WithMany("Liker")
+                        .HasForeignKey("LikeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Projekt.API.Models.User", "Liker")
+                        .WithMany("Likees")
+                        .HasForeignKey("LikerId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Projekt.API.Models.Photo", b =>

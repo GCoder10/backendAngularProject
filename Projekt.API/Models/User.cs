@@ -21,7 +21,8 @@ namespace Projekt.API.Models
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
-
+        public ICollection<Like> Liker { get; set; }
+        public ICollection<Like> Likees { get; set; }
         public User()
         {
             Photos = new Collection<Photo>();
