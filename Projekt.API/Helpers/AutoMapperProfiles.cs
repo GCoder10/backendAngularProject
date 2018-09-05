@@ -30,7 +30,7 @@ namespace Projekt.API.Helpers
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
             CreateMap<UserForRegisterDto, User>();
-            CreateMap<MessageForCreationDto, Message>();
+            CreateMap<MessageForCreationDto, Message>().ReverseMap();
         }   
     }
 }

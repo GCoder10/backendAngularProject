@@ -39,7 +39,7 @@ namespace Projekt.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMessage(int userId, MessageForCreationDto messageForCreationDto)
+        public async Task<IActionResult> CreateMessage(int userId, [FromBody]MessageForCreationDto messageForCreationDto)
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
@@ -55,8 +55,10 @@ namespace Projekt.API.Controllers
 
             _repo.Add(message);
 
+            var messageToReturn = _mapper.Map<MessageForCreationDto>(message);
+
             if (await _repo.SaveAll())
-                return CreatedAtRoute("GetMessage", new {id = message.Id}, message);
+                return CreatedAtRoute("GetMessage", new {id = message.Id}, messageToReturn);
 
             throw new Exception("Creating the message failed on save");
         }
